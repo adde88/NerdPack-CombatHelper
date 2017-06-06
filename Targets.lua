@@ -1,4 +1,21 @@
 local _, CH = ...
+local NeP = NeP
+local strsplit = strsplit
+local UnitGUID = UnitGUID
+local UnitIsDeadOrGhost = UnitIsDeadOrGhost
+local UnitReaction = UnitReaction
+local UnitExists = UnitExists
+local UnitAffectingCombat = UnitAffectingCombat
+local TargetUnit = TargetUnit
+local C_Timer = C_Timer
+
+NeP.Interface:AddToggle({
+		key = 'AutoTarget',
+		name = 'Auto Target',
+		text = 'Automatically target the nearest enemy when target dies or does not exist',
+		icon = 'Interface\\Icons\\ability_hunter_snipershot',
+		nohide = true
+})
 
 local NeP_forceTarget = {
 	-- WOD DUNGEONS/RAIDS
@@ -42,16 +59,15 @@ local NeP_forceTarget = {
 }
 
 local function getTargetPrio(Obj)
-	local objectType, _, _, _, _, _id, _ = strsplit('-', UnitGUID(Obj))
-	local ID = tonumber(_id) or '0'
+	local id = tonumber(select(6, strsplit('-', UnitGUID(Obj))) or 0)
 	local prio = 1
 	-- Elite
 	if NeP.DSL:Get('elite')(Obj) then
 		prio = prio + 30
 	end
 	-- If its forced
-	if NeP_forceTarget[tonumber(Obj)] ~= nil then
-		prio = prio + NeP_forceTarget[tonumber(Obj)]
+	if NeP_forceTarget[tonumber(Obj)] then
+		prio = prio + NeP_forceTarget[id]
 	end
 	return prio
 end
@@ -60,7 +76,7 @@ function CH:Target()
 	-- If dont have a target, target is friendly or dead
   if not UnitExists('target') or UnitReaction('player', 'target') > 4 or UnitIsDeadOrGhost('target') then
 		local setPrio = {}
-		for GUID, Obj in pairs(NeP.OM:Get('Enemy')) do
+		for _, Obj in pairs(NeP.OM:Get('Enemy')) do
 			if UnitExists(Obj.key) and Obj.distance <= 40 then
 				if (UnitAffectingCombat(Obj.key) or NeP.DSL:Get('isdummy')(Obj.key))
 				and NeP.DSL:Get('infront')(Obj.key) then
@@ -78,3 +94,12 @@ function CH:Target()
 		end
 	end
 end
+
+-- Ticker
+C_Timer.NewTicker(0.1, (function()
+	if UnitAffectingCombat('player')
+	and NeP.DSL:Get('toggle')(nil, 'mastertoggle')
+	and NeP.DSL:Get('toggle')(nil, 'AutoTarget') then
+			CH:Target()
+	end
+end), nil)
