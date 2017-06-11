@@ -17,7 +17,7 @@ NeP.Interface:AddToggle({
 		key = 'AutoFace',
 		name = 'Auto Face',
 		text = 'Automatically Face your target',
-		icon = 'Interface\\Icons\\ability_hunter_snipershot',
+		icon = 'Interface\\Icons\\misc_arrowlup',
 		nohide = true
 })
 

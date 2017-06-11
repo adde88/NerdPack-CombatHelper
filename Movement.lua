@@ -9,7 +9,7 @@ NeP.Interface:AddToggle({
 		key = 'AutoMove',
 		name = 'Auto Move',
 		text = 'Automatically move to your target',
-		icon = 'Interface\\Icons\\ability_hunter_snipershot',
+		icon = 'Interface\\Icons\\ability_monk_legsweep',
 		nohide = true
 })
 
