@@ -16,6 +16,7 @@ NeP.Interface:AddToggle({
 local awsd = {'65', '83', '68', '87'}
 function CH:manualMoving()
   for i=1, #awsd do
+		print(awsd[i])
     if GetKeyState(awsd[i]) then
       return true
     end

@@ -22,16 +22,13 @@ NeP.Interface:AddToggle({
 })
 
 function CH:Face()
-	local unitSpeed = GetUnitSpeed('player')
-	if unitSpeed == 0 and not NeP.DSL:Get('Infront')('target') then
-		local ax, ay = ObjectPosition('player')
-		local bx, by = ObjectPosition('target')
-		local angle = rad(atan2(by - ay, bx - ax))
-		if angle < 0 then
-			FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
-		else
-			FaceDirection(angle)
-		end
+	local ax, ay = ObjectPosition('player')
+	local bx, by = ObjectPosition('target')
+	local angle = rad(atan2(by - ay, bx - ax))
+	if angle < 0 then
+		FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
+	else
+		FaceDirection(angle)
 	end
 end
 
@@ -41,8 +38,9 @@ C_Timer.NewTicker(0.1, (function()
 	and UnitExists('target')
 	and NeP.DSL:Get('toggle')(nil, 'mastertoggle')
 	and NeP.DSL:Get('toggle')(nil, 'AutoFace')
-	and not UnitChannelInfo('player')
-	and not CH:manualMoving() then
+	and not NeP.DSL:Get('casting')('player')
+	and not NeP.DSL:Get('Infront')('target')
+	and NeP.DSL:Get('movingfor')('player') < 2 then
 		CH:Face()
 	end
 end), nil)
