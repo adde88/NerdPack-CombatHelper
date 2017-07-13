@@ -40,7 +40,7 @@ C_Timer.NewTicker(0.1, (function()
 	and NeP.DSL:Get('toggle')(nil, 'AutoFace')
 	and not NeP.DSL:Get('casting')('player')
 	and not NeP.DSL:Get('Infront')('target')
-	and NeP.DSL:Get('movingfor')('player') < 2 then
+	and not NeP.DSL:Get('moving')('player') then
 		CH:Face()
 	end
 end), nil)
