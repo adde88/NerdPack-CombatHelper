@@ -17,5 +17,5 @@ local config = {
 }
 
 local GUI = NeP.Interface:BuildGUI(config)
-NeP.Interface:Add('Combat Helper V:'..CH.Version, function() GUI:Show() end)
-GUI:Hide()
+NeP.Interface:Add('Combat Helper V:'..CH.Version, function() GUI.parent:Show() end)
+GUI.parent:Hide()
