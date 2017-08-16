@@ -6,12 +6,12 @@ local NeP = NeP
 local UnitAffectingCombat = UnitAffectingCombat
 local FaceDirection = FaceDirection
 local ObjectPosition = ObjectPosition
-local GetUnitSpeed = GetUnitSpeed
+local UnitChannelInfo = UnitChannelInfo
+local UnitCastingInfo = UnitCastingInfo
 local rad = rad
 local atan2 = atan2
 local C_Timer = C_Timer
 local UnitExists = UnitExists
-local UnitChannelInfo = UnitChannelInfo
 
 NeP.Interface:AddToggle({
 		key = 'AutoFace',
@@ -21,9 +21,10 @@ NeP.Interface:AddToggle({
 		nohide = true
 })
 
-function CH:Face()
+function CH.Face()
 	local ax, ay = ObjectPosition('player')
 	local bx, by = ObjectPosition('target')
+	if not ax or not bx then return end
 	local angle = rad(atan2(by - ay, bx - ax))
 	if angle < 0 then
 		FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
@@ -38,7 +39,8 @@ C_Timer.NewTicker(0.1, (function()
 	and UnitExists('target')
 	and NeP.DSL:Get('toggle')(nil, 'mastertoggle')
 	and NeP.DSL:Get('toggle')(nil, 'AutoFace')
-	and not NeP.DSL:Get('casting')('player')
+	and not UnitChannelInfo('player')
+	and not UnitCastingInfo('player')
 	and not NeP.DSL:Get('Infront')('target')
 	and not NeP.DSL:Get('moving')('player')
 	and not CH:manualMoving() then
