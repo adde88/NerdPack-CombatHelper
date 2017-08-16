@@ -12,6 +12,7 @@ local LootSlotHasItem = LootSlotHasItem
 local CloseLoot = CloseLoot
 local CanLootUnit = CanLootUnit
 local UnitChannelInfo = UnitChannelInfo
+local UnitCastingInfo = UnitCastingInfo
 local IsMounted = IsMounted
 
 local ObjectGUID = ObjectGUID
@@ -47,11 +48,11 @@ end
 
 -- Ticker
 C_Timer.NewTicker(0.1, (function()
-	if not UnitAffectingCombat('player')
-	and NeP.DSL:Get('toggle')(nil, 'mastertoggle')
+	if NeP.DSL:Get('toggle')(nil, 'mastertoggle')
 	and NeP.DSL:Get('toggle')(nil, 'AutoLoot')
 	and not UnitChannelInfo('player')
-    and not IsMounted("player") then
+	and not UnitCastingInfo('player')
+  and not IsMounted("player") then
         if LootFrame:IsShown() then
 		    CH:Loot()
         else
