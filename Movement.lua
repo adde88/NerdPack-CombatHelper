@@ -33,9 +33,8 @@ function CH.manualMoving()
 end
 
 function CH.Move()
-	local classIndex = select(3, UnitClass('player'))
 	local specIndex = GetSpecializationInfo(GetSpecialization())
-	local tRange = NeP.ClassTable[classIndex][specIndex].range
+	local tRange = NeP.ClassTable:GetRange(specIndex)
 	local Range = NeP.DSL:Get("range")("player", "target")
 	local unitSpeed = GetUnitSpeed('player')
 	-- Stop Moving
