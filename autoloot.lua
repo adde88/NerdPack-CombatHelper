@@ -17,6 +17,7 @@ local IsMounted = IsMounted
 
 local ObjectGUID = ObjectGUID
 local ObjectInteract = ObjectInteract
+local ObjectExists = ObjectExists
 
 NeP.Interface:AddToggle({
 		key = 'AutoLoot',
@@ -35,7 +36,7 @@ end
 
 function CH:DoLoot()
     for _, Obj in pairs(NeP.OM:Get('Dead')) do
-        if Obj.distance < 5 then
+        if Obj.distance < 5 and ObjectExists(Obj.key) then
             local hl,cl = CanLootUnit(ObjectGUID(Obj.key))
             if hl and cl then
                 ObjectInteract(Obj.key)
