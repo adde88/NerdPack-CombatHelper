@@ -72,7 +72,7 @@ local function getTargetPrio(Obj)
 	return prio
 end
 
-function CH:Target()
+function CH.Target()
 	-- If dont have a target, target is friendly or dead
   if not UnitExists('target') or UnitReaction('player', 'target') > 4 or UnitIsDeadOrGhost('target') then
 		local setPrio = {}
@@ -90,7 +90,7 @@ function CH:Target()
 		end
 		table.sort(setPrio, function(a,b) return a.bonus > b.bonus end)
 		if setPrio[1] then
-			TargetUnit(setPrio[1].key)
+			NeP.Protected.TargetUnit(setPrio[1].key)
 		end
 	end
 end
