@@ -12,6 +12,7 @@ local rad = rad
 local atan2 = atan2
 local C_Timer = C_Timer
 local UnitExists = UnitExists
+local UnitIsDeadOrGhost = UnitIsDeadOrGhost
 
 NeP.Interface:AddToggle({
 		key = 'AutoFace',
@@ -24,7 +25,7 @@ NeP.Interface:AddToggle({
 function CH.Face()
 	local ax, ay = ObjectPosition('player')
 	local bx, by = ObjectPosition('target')
-	if not ax or not bx then return end
+	if not ax or not bx or UnitIsDeadOrGhost('target') then return end
 	local angle = rad(atan2(by - ay, bx - ax))
 	if angle < 0 then
 		FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
