@@ -1,12 +1,12 @@
 local _, CH = ...
 local NeP = NeP
+
 local strsplit = strsplit
 local UnitGUID = UnitGUID
 local UnitIsDeadOrGhost = UnitIsDeadOrGhost
 local UnitReaction = UnitReaction
 local UnitExists = UnitExists
 local UnitAffectingCombat = UnitAffectingCombat
-local TargetUnit = TargetUnit
 local C_Timer = C_Timer
 
 NeP.Interface:AddToggle({
