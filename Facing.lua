@@ -1,6 +1,5 @@
 local _, CH = ...
 local NeP = NeP
-<<<<<<< HEAD
 
 function CH.Load_Face()
 
@@ -12,6 +11,7 @@ function CH.Load_Face()
 	local ObjectPosition = ObjectPosition
 	local UnitChannelInfo = UnitChannelInfo
 	local UnitCastingInfo = UnitCastingInfo
+	local UnitIsDeadOrGhost = UnitIsDeadOrGhost
 	local rad = rad
 	local atan2 = atan2
 	local C_Timer = C_Timer
@@ -28,43 +28,13 @@ function CH.Load_Face()
 	function CH.Face()
 		local ax, ay = ObjectPosition('player')
 		local bx, by = ObjectPosition('target')
-		if not ax or not bx then return end
+		if not ax or not bx or UnitIsDeadOrGhost('target') then return end
 		local angle = rad(atan2(by - ay, bx - ax))
 		if angle < 0 then
 			FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
 		else
 			FaceDirection(angle)
 		end
-=======
-local UnitAffectingCombat = UnitAffectingCombat
-local FaceDirection = FaceDirection
-local ObjectPosition = ObjectPosition
-local UnitChannelInfo = UnitChannelInfo
-local UnitCastingInfo = UnitCastingInfo
-local rad = rad
-local atan2 = atan2
-local C_Timer = C_Timer
-local UnitExists = UnitExists
-local UnitIsDeadOrGhost = UnitIsDeadOrGhost
-
-NeP.Interface:AddToggle({
-		key = 'AutoFace',
-		name = 'Auto Face',
-		text = 'Automatically Face your target',
-		icon = 'Interface\\Icons\\misc_arrowlup',
-		nohide = true
-})
-
-function CH.Face()
-	local ax, ay = ObjectPosition('player')
-	local bx, by = ObjectPosition('target')
-	if not ax or not bx or UnitIsDeadOrGhost('target') then return end
-	local angle = rad(atan2(by - ay, bx - ax))
-	if angle < 0 then
-		FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
-	else
-		FaceDirection(angle)
->>>>>>> ba789bf455d1f1d6d4b74ec890497249c407220e
 	end
 
 	-- Ticker
