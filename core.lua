@@ -1,5 +1,5 @@
 local n_name, CH = ...
-local NeP = NeP
+local NeP = _G.NeP
 
 CH.Version = 1.3
 

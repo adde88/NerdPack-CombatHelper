@@ -1,22 +1,21 @@
 local _, CH = ...
-local NeP = NeP
+local NeP = _G.NeP
 
 function CH.Load_Move()
 
 	-- Dont even load if not using advaned
-	if not IsHackEnabled then return end
+	if not _G.IsHackEnabled then return end
 
-	local UnitClass = UnitClass
-	local GetSpecializationInfo = GetSpecializationInfo
-	local GetSpecialization = GetSpecialization
-	local GetUnitSpeed = GetUnitSpeed
-	local UnitAffectingCombat = UnitAffectingCombat
-	local UnitExists = ObjectExists or UnitExists
-	local C_Timer = C_Timer
+	local GetSpecializationInfo = _G.GetSpecializationInfo
+	local GetSpecialization = _G.GetSpecialization
+	local GetUnitSpeed = _G.GetUnitSpeed
+	local UnitAffectingCombat = _G.UnitAffectingCombat
+	local UnitExists = _G.ObjectExists
+	local C_Timer = _G.C_Timer
 
-	local GetKeyState = GetKeyState
-	local ObjectPosition = ObjectPosition
-	local MoveTo = MoveTo
+	local GetKeyState = _G.GetKeyState
+	local ObjectPosition = _G.ObjectPosition
+	local MoveTo = _G.MoveTo
 
 	NeP.Interface:AddToggle({
 			key = 'AutoMove',

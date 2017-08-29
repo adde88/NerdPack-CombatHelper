@@ -1,21 +1,21 @@
 local _, CH = ...
-local NeP = NeP
+local NeP = _G.NeP
 
 function CH.Load_Face()
 
 	-- Dont even load if not using advaned
-	if not IsHackEnabled then return end
+	if not _G.IsHackEnabled then return end
 
-	local UnitAffectingCombat = UnitAffectingCombat
-	local FaceDirection = FaceDirection
-	local ObjectPosition = ObjectPosition
-	local UnitChannelInfo = UnitChannelInfo
-	local UnitCastingInfo = UnitCastingInfo
-	local UnitIsDeadOrGhost = UnitIsDeadOrGhost
-	local rad = rad
-	local atan2 = atan2
-	local C_Timer = C_Timer
-	local UnitExists = UnitExists
+	local UnitAffectingCombat = _G.UnitAffectingCombat
+	local FaceDirection = _G.FaceDirection
+	local ObjectPosition = _G.ObjectPosition
+	local UnitChannelInfo = _G.UnitChannelInfo
+	local UnitCastingInfo = _G.UnitCastingInfo
+	local UnitIsDeadOrGhost = _G.UnitIsDeadOrGhost
+	local rad = _G.rad
+	local atan2 = _G.atan2
+	local C_Timer = _G.C_Timer
+	local UnitExists = _G.UnitExists
 
 	NeP.Interface:AddToggle({
 			key = 'AutoFace',
