@@ -1,10 +1,11 @@
-if not IsHackEnabled then return end
-
 local _, CH = ...
 local icon = 'Interface\\Icons\\trade_archaeology_chestoftinyglassanimals'
 local NeP = NeP
 
 function CH.Load_Loot()
+
+	-- DOnt load if not advanced
+	if not IsHackEnabled then return end
 
 	local C_Timer = C_Timer
 	local GetNumLootItems = GetNumLootItems
