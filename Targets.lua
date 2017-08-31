@@ -1,7 +1,4 @@
 local _, CH = ...
-local NeP =_G. NeP
-
-local C_Timer = _G.C_Timer
 
 NeP.Interface:AddToggle({
 		key = 'AutoTarget',

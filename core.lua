@@ -1,7 +1,6 @@
 local n_name, CH = ...
-local NeP = _G.NeP
 
-CH.Version = 1.3
+CH.Version = 1.4
 
 local config = {
 	key = 'NeP_CombatHelper',

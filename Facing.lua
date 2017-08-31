@@ -1,21 +1,9 @@
 local _, CH = ...
-local NeP = _G.NeP
 
 function CH.Load_Face()
 
 	-- Dont even load if not using advaned
-	if not _G.IsHackEnabled then return end
-
-	local UnitAffectingCombat = _G.UnitAffectingCombat
-	local FaceDirection = _G.FaceDirection
-	local ObjectPosition = _G.ObjectPosition
-	local UnitChannelInfo = _G.UnitChannelInfo
-	local UnitCastingInfo = _G.UnitCastingInfo
-	local UnitIsDeadOrGhost = _G.UnitIsDeadOrGhost
-	local rad = _G.rad
-	local atan2 = _G.atan2
-	local C_Timer = _G.C_Timer
-	local UnitExists = _G.UnitExists
+	if not HackEnabled then return end
 
 	NeP.Interface:AddToggle({
 			key = 'AutoFace',
@@ -31,9 +19,9 @@ function CH.Load_Face()
 		if not ax or not bx or UnitIsDeadOrGhost('target') then return end
 		local angle = rad(atan2(by - ay, bx - ax))
 		if angle < 0 then
-			FaceDirection(rad(atan2(by - ay, bx - ax) + 360))
+			UnitSetFacing(rad(atan2(by - ay, bx - ax) + 360))
 		else
-			FaceDirection(angle)
+			UnitSetFacing(angle)
 		end
 	end
 
