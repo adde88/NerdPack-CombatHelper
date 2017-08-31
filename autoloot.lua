@@ -1,26 +1,10 @@
 local _, CH = ...
 local icon = 'Interface\\Icons\\trade_archaeology_chestoftinyglassanimals'
-local NeP = _G.NeP
 
 function CH.Load_Loot()
 
 	-- DOnt load if not advanced
-	if not _G.IsHackEnabled then return end
-
-	local C_Timer = _G.C_Timer
-	local GetNumLootItems = _G.GetNumLootItems
-	local LootFrame = _G.LootFrame
-	local LootSlot = _G.LootSlot
-	local LootSlotHasItem = _G.LootSlotHasItem
-	local CloseLoot = _G.CloseLoot
-	local CanLootUnit = _G.CanLootUnit
-	local UnitChannelInfo = _G.UnitChannelInfo
-	local UnitCastingInfo = _G.UnitCastingInfo
-	local IsMounted = _G.IsMounted
-
-	local ObjectGUID = _G.ObjectGUID
-	local ObjectInteract = _G.ObjectInteract
-	local ObjectExists = _G.ObjectExists
+	if not HackEnabled then return end
 
 	NeP.Interface:AddToggle({
 			key = 'AutoLoot',
