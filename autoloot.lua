@@ -23,7 +23,7 @@ function CH.Load_Loot()
 
 	function CH.DoLoot()
 	    for _, Obj in pairs(NeP.OM:Get('Dead')) do
-	        if Obj.distance < 5 and ObjectExists(Obj.key) then
+	        if Obj.distance < 5 and ObjectIsVisible(Obj.key) then
 	            local hl,cl = CanLootUnit(ObjectGUID(Obj.key))
 	            if hl and cl then
 	                ObjectInteract(Obj.key)
