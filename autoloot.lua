@@ -42,9 +42,9 @@ function CH.Load_Loot()
 		and not UnitCastingInfo('player')
 	  and not IsMounted("player") then
 	        if LootFrame:IsShown() then
-			    CH:Loot()
+						CH:Loot()
 	        else
-	            CH:DoLoot()
+						CH:DoLoot()
 	        end
 		end
 	end), nil)
