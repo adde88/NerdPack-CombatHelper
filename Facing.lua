@@ -19,9 +19,9 @@ function CH.Load_Face()
 		if not ax or not bx or UnitIsDeadOrGhost('target') then return end
 		local angle = rad(atan2(by - ay, bx - ax))
 		if angle < 0 then
-			UnitSetFacing(rad(atan2(by - ay, bx - ax) + 360))
+			UnitSetFacing('player', rad(atan2(by - ay, bx - ax) + 360))
 		else
-			UnitSetFacing(angle)
+			UnitSetFacing('player', angle)
 		end
 	end
 
