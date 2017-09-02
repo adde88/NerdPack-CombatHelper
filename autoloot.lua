@@ -40,7 +40,8 @@ function CH.Load_Loot()
 		and NeP.DSL:Get('toggle')(nil, 'AutoLoot')
 		and not UnitChannelInfo('player')
 		and not UnitCastingInfo('player')
-	  and not IsMounted("player") then
+	  and not IsMounted("player")
+		and not UnitAffectingCombat("player") then
 	        if LootFrame:IsShown() then
 						CH:Loot()
 	        else
